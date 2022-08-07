@@ -1,5 +1,6 @@
 body {
   background-color: #f5f5f5;
+  color: #343434;
 }
 
 .weather-app {
@@ -8,11 +9,12 @@ body {
   background: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
   border-radius: 50px;
   min-height: 400px;
-  padding: 45px;
+  padding: 35px 45px 45px 45px;
 }
 
 .city-search {
   background-color: #f5f5f5;
+  margin: 10px 0;
   border-radius: 50px;
   border: none;
   padding: 5px 15px 5px 15px;
@@ -21,7 +23,39 @@ body {
 
 .city-search:focus {
   outline-color: #774cfe;
-  color: #5c585b;
+  color: #343434;
+}
+
+.search-button {
+  border-radius: 30px;
+  padding: 5px 15px;
+  background: #774cfe;
+  border: none;
+  color: #f5f5f5;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.search-button:hover {
+  background-color: #5134b2;
+  cursor: pointer;
+  color: #f5f5f5;
+}
+
+.current-location-button {
+  border-radius: 30px;
+  padding: 5px 15px;
+  background: #e564cd;
+  border: none;
+  color: #f5f5f5;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.current-location-button:hover {
+  background-color: #cc43b3;
+  cursor: pointer;
+  color: #f5f5f5;
+}
+
+.current-city {
+  color: #343434;
 }
 
 .footer {
