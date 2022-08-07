@@ -90,8 +90,8 @@ body {
 }
 .current-city-weather-icon {
   position: relative;
-  top: 47px;
-  right: -23px;
+  top: -70px;
+  left: 120px;
   width: 120px;
   height: 120px;
 }
