@@ -15,21 +15,20 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col">
-          <form action="">
-            <input
-              type="search"
-              name=""
-              id="city-search"
-              placeholder="Enter a city.."
-            />
-            <input type="submit" value="Search" />
-            <input type="button" value="Current" />
-          </form>
-        </div>
-        <diw class="row">
-          <div class="col-6">
+      <div class="weather-app">
+        <form action="">
+          <input
+            type="search"
+            name=""
+            id="city-search"
+            class="city-search"
+            placeholder="Enter a city.."
+          />
+          <input type="submit" value="Search" />
+          <input type="button" value="Current" />
+        </form>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <h1>Kiev</h1>
             <div>August 6</div>
             <div>Monday 06:18</div>
@@ -59,7 +58,7 @@
               </div>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <div class="row">
               <div class="col-6">
                 <img
@@ -144,14 +143,21 @@
               </div>
             </div>
           </div>
-        </diw>
+        </div>
       </div>
-      <small>
+
+      <div class="footer">
         <a href="https://github.com/Zhikiki/vanila-weather-app" target="_blank"
           >Open-source code</a
         >
         by Ksenia Zhykina
-      </small>
+      </div>
+      <div>
+        <img
+          src="src/images/Снимок экрана 2022-08-07 в 2.50.47 PM.png"
+          alt=""
+        />
+      </div>
     </div>
     <script src="src/index.js"></script>
   </body>
