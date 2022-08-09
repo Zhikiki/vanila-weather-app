@@ -58,6 +58,9 @@ body {
   color: #f5f5f5;
 }
 
+.current-city-container {
+  margin: auto 0;
+}
 .current-city {
   color: #3d3d3d;
   margin: 10px 0 0;
@@ -94,7 +97,7 @@ body {
   position: relative;
   font-size: 110px;
   top: -50px;
-  left: 125px;
+  left: 117px;
 }
 .current-city-weather-details {
   margin-bottom: 40px;
@@ -115,6 +118,7 @@ body {
 .forecast {
   /* min-width: 360px; */
   background: #ffffff;
+
   padding: 25px;
   margin: 15px 0 30px;
   border-radius: 30px;
@@ -123,6 +127,7 @@ body {
   padding: 15px;
   border-radius: 30px;
   min-width: 265px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   color: #ffffff;
   background: linear-gradient(127.04deg, #ff68c0 9.06%, #774cfe 97.79%);
 }
@@ -144,6 +149,24 @@ body {
   font-weight: 600;
   line-height: 1;
 }
+.next-days-forecast {
+  margin: 25px auto 0;
+  text-align: center;
+}
+.forecast-block {
+  border: 1px solid #fc5eba;
+  border-radius: 30px;
+  margin: 10px auto 0;
+  max-width: 55px;
+  padding: 12px 7px;
+}
+.forecast-block i {
+  display: block;
+  margin: 5px auto;
+  color: #fc5eba;
+  font-size: 27px;
+}
+
 .footer {
   text-align: center;
   margin: 0;
