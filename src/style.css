@@ -72,7 +72,7 @@ body {
   margin-bottom: 20px;
 }
 .current-city-weather-container {
-  margin: 40px auto;
+  margin: 40px auto 45px;
   max-width: 220px;
   max-height: 150px;
   padding: 30px;
