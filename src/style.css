@@ -5,7 +5,7 @@ body {
 
 .weather-app {
   max-width: 850px;
-  margin: 30px auto;
+  margin: 30px auto 10px;
   background: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
   border-radius: 50px;
   min-height: 400px;
