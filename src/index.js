@@ -12,7 +12,16 @@ function displayCurrentTemperature(response) {
   );
   currentCityTemperatureElement.innerHTML = Math.round(response.data.main.temp);
 
-  console.log(response.data.weather[0].main);
+  let visibilityElement = document.querySelector("#visibility");
+  visibilityElement.innerHTML = Math.round(response.data.visibility / 1000);
+
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = response.data.main.humidity;
+
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+
+  console.log(response.data);
 }
 
 let apiKey = "da6d6b75abd767e257a129a08b4d0f5d";

@@ -47,24 +47,33 @@
             <h1 class="current-city" id="current-city"></h1>
             <div class="current-date">Monday 06:18, August 6</div>
             <div class="current-city-weather-container">
-              <div class="current-city-weather-status" id="current-city-weather-status"></div>
               <div
-                class="current-city-temperature"
-                id="current-city-temperature"
-              >24</div><span class="units">°C|°F</span>
+                class="current-city-weather-status"
+                id="current-city-weather-status"
+              ></div>
+              <div class="current-city-temp-container">
+                <div
+                  class="current-city-temperature"
+                  id="current-city-temperature"
+                ></div>
+                <span class="units">°C|°F</span>
+              </div>
               <i class="fa-solid fa-sun current-city-weather-icon"></i>
             </div>
             <div class="row current-city-weather-details">
               <div class="col">
-                <div><i class="fa-regular fa-eye"></i> 10 km</div>
+                <i class="fa-regular fa-eye"></i>
+                <span id="visibility"></span> km
                 <div class="characteristic">Visibility</div>
               </div>
               <div class="col">
-                <div><i class="fa-solid fa-droplet"></i> 78%</div>
+                <i class="fa-solid fa-droplet"></i>
+                <span id="humidity"></span>%
                 <div class="characteristic">Humidity</div>
               </div>
               <div class="col">
-                <div><i class="fa-solid fa-wind"></i> 3 km/h</div>
+                <i class="fa-solid fa-wind"></i>
+                <span id="wind"></span> km/h
                 <div class="characteristic">Wind</div>
               </div>
             </div>

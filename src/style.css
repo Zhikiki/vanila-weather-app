@@ -73,13 +73,16 @@ body {
 }
 .current-city-weather-container {
   margin: 40px auto 45px;
-  max-width: 220px;
-  max-height: 150px;
+  max-width: 250px;
+  max-height: 180px;
   padding: 30px;
   padding-bottom: 0;
   background: linear-gradient(127.04deg, #ff68c0 9.06%, #774cfe 97.79%);
   border-radius: 30px;
   color: #ffffff;
+}
+.current-city-temp-container {
+  margin: 15px auto 0;
 }
 .current-city-temperature {
   display: inline-block;
@@ -96,8 +99,8 @@ body {
   display: block;
   position: relative;
   font-size: 110px;
-  top: -50px;
-  left: 117px;
+  top: -43px;
+  left: 140px;
 }
 .current-city-weather-details {
   margin-bottom: 40px;
