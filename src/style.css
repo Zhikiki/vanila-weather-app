@@ -95,12 +95,12 @@ body {
   top: -40px;
   font-size: 17px;
 }
-.current-city-weather-icon {
+.current-city-weather-container i {
   display: block;
   position: relative;
   font-size: 110px;
   top: -43px;
-  left: 140px;
+  left: 112px;
 }
 .current-city-weather-details {
   margin-bottom: 40px;

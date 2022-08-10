@@ -43,6 +43,42 @@ function formatDate(timestamp) {
   return `${weekday} ${hours}:${minutes}, ${month} ${day}`;
 }
 
+function formatIcon(defaultIcon) {
+  if (defaultIcon === "01d" || defaultIcon === "01n") {
+    return `fa-solid fa-sun`;
+  }
+  if (defaultIcon === "02d" || defaultIcon === "02n") {
+    return `fa-solid fa-cloud-sun`;
+  }
+  if (
+    defaultIcon === "03d" ||
+    defaultIcon === "03n" ||
+    defaultIcon === "04d" ||
+    defaultIcon === "04n"
+  ) {
+    return `fa-solid fa-cloud`;
+  }
+
+  if (
+    defaultIcon === "09d" ||
+    defaultIcon === "09n" ||
+    defaultIcon === "10d" ||
+    defaultIcon === "10n"
+  ) {
+    return `fa-solid fa-cloud-rain`;
+  }
+
+  if (defaultIcon === "11d" || defaultIcon === "11d") {
+    return `fa-solid fa-cloud-bolt`;
+  }
+  if (defaultIcon === "13d" || defaultIcon === "13n") {
+    return `fa-solid fa-snowflake`;
+  }
+  if (defaultIcon === "50d" || defaultIcon === "50n") {
+    return `fa-solid fa-cloud`;
+  }
+}
+
 function displayCurrentTemperature(response) {
   let currentCityElement = document.querySelector("#current-city");
   currentCityElement.innerHTML = response.data.name;
@@ -68,9 +104,19 @@ function displayCurrentTemperature(response) {
 
   let currentDateElement = document.querySelector("#current-date");
   currentDateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+  let currentWeatherIconElement = document.querySelector(
+    "#current-weather-icon"
+  );
+  currentWeatherIconElement.setAttribute(
+    "class",
+    formatIcon(response.data.weather[0].icon)
+  );
+
+  console.log(response.data.weather[0].icon);
 }
 
 let apiKey = "da6d6b75abd767e257a129a08b4d0f5d";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayCurrentTemperature);
