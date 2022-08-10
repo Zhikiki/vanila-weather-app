@@ -1,3 +1,54 @@
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  console.log(date);
+
+  let hours = date.getHours();
+  console.log(hours);
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  console.log(minutes);
+
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let weekday = weekdays[date.getDay()];
+  console.log(weekday);
+
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[date.getMonth()];
+  console.log(month);
+
+  let day = date.getDate();
+  console.log(day);
+  // calculate the date
+  return `${weekday} ${hours}:${minutes}, ${month} ${day}`;
+}
+
 function displayCurrentTemperature(response) {
   let currentCityElement = document.querySelector("#current-city");
   currentCityElement.innerHTML = response.data.name;
@@ -20,6 +71,9 @@ function displayCurrentTemperature(response) {
 
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+
+  let currentDateElement = document.querySelector("#current-date");
+  currentDateElement.innerHTML = formatDate(response.data.dt * 1000);
 
   console.log(response.data);
 }
