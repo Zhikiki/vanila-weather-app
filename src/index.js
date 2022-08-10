@@ -1,9 +1,7 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  console.log(date);
 
   let hours = date.getHours();
-  console.log(hours);
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -12,7 +10,6 @@ function formatDate(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  console.log(minutes);
 
   let weekdays = [
     "Sunday",
@@ -24,7 +21,6 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let weekday = weekdays[date.getDay()];
-  console.log(weekday);
 
   let months = [
     "January",
@@ -41,11 +37,9 @@ function formatDate(timestamp) {
     "December",
   ];
   let month = months[date.getMonth()];
-  console.log(month);
 
   let day = date.getDate();
-  console.log(day);
-  // calculate the date
+
   return `${weekday} ${hours}:${minutes}, ${month} ${day}`;
 }
 
@@ -74,8 +68,6 @@ function displayCurrentTemperature(response) {
 
   let currentDateElement = document.querySelector("#current-date");
   currentDateElement.innerHTML = formatDate(response.data.dt * 1000);
-
-  console.log(response.data);
 }
 
 let apiKey = "da6d6b75abd767e257a129a08b4d0f5d";
