@@ -37,6 +37,7 @@ body {
   border: none;
   color: #f5f5f5;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 150ms ease-in-out;
 }
 .search-button:hover {
   background-color: #5134b2;
@@ -51,6 +52,7 @@ body {
   border: none;
   color: #f5f5f5;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 150ms ease-in-out;
 }
 .current-location-button:hover {
   background-color: #cc43b3;
@@ -91,6 +93,29 @@ body {
   line-height: 1;
 }
 .units {
+  color: #fff;
+  position: relative;
+  top: -40px;
+  font-size: 17px;
+  padding: 2px;
+  transition: all 150ms ease-in-out;
+  text-decoration: none;
+}
+.units:hover {
+  background-color: #fff;
+  border-radius: 5px;
+  color: #343434;
+}
+
+.active {
+  background-color: #fff;
+  border-radius: 5px;
+  color: #343434;
+  cursor: default;
+  text-decoration: none;
+}
+
+.divider {
   position: relative;
   top: -40px;
   font-size: 17px;

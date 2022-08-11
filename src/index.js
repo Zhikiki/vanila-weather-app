@@ -80,6 +80,9 @@ function formatIcon(defaultIcon) {
 }
 
 function displayCurrentTemperature(response) {
+  celsiusTemp = response.data.main.temp;
+  console.log(celsiusTemp);
+
   let currentCityElement = document.querySelector("#current-city");
   currentCityElement.innerHTML = response.data.name;
 
@@ -91,7 +94,7 @@ function displayCurrentTemperature(response) {
   let currentCityTemperatureElement = document.querySelector(
     "#current-city-temperature"
   );
-  currentCityTemperatureElement.innerHTML = Math.round(response.data.main.temp);
+  currentCityTemperatureElement.innerHTML = Math.round(celsiusTemp);
 
   let visibilityElement = document.querySelector("#visibility");
   visibilityElement.innerHTML = Math.round(response.data.visibility / 1000);
@@ -128,8 +131,39 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
   searchCity(cityInputElement.value);
 }
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let currentTemperatureElement = document.querySelector(
+    "#current-city-temperature"
+  );
+  currentTemperatureElement.innerHTML = Math.round(celsiusTemp);
+
+  fahreneitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+}
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let currentTemperatureElement = document.querySelector(
+    "#current-city-temperature"
+  );
+  let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5 + 32);
+
+  currentTemperatureElement.innerHTML = fahrenheitTemp;
+
+  celsiusLink.classList.remove("active");
+  fahreneitLink.classList.add("active");
+  //   remove class="acrive" from celsius link
+  //   add class="acrive" for fahrenheitLink
+}
+let celsiusTemp = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+let fahreneitLink = document.querySelector("#fahrenheit-link");
+fahreneitLink.addEventListener("click", displayFahrenheitTemp);
 
 searchCity("Kiev");
