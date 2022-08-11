@@ -116,7 +116,20 @@ function displayCurrentTemperature(response) {
   console.log(response.data.weather[0].icon);
 }
 
-let apiKey = "da6d6b75abd767e257a129a08b4d0f5d";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${apiKey}&units=metric`;
+function searchCity(city) {
+  let apiKey = "da6d6b75abd767e257a129a08b4d0f5d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(displayCurrentTemperature);
+  axios.get(apiUrl).then(displayCurrentTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  searchCity(cityInputElement.value);
+}
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+searchCity("Kiev");
