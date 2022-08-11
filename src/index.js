@@ -81,7 +81,6 @@ function formatIcon(defaultIcon) {
 
 function displayCurrentTemperature(response) {
   celsiusTemp = response.data.main.temp;
-  console.log(celsiusTemp);
 
   let currentCityElement = document.querySelector("#current-city");
   currentCityElement.innerHTML = response.data.name;
@@ -115,8 +114,6 @@ function displayCurrentTemperature(response) {
     "class",
     formatIcon(response.data.weather[0].icon)
   );
-
-  console.log(response.data.weather[0].icon);
 }
 
 function searchCity(city) {
@@ -130,6 +127,9 @@ function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
   searchCity(cityInputElement.value);
+
+  fahreneitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
 }
 function displayCelsiusTemp(event) {
   event.preventDefault();
