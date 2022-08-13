@@ -180,6 +180,7 @@ body {
   text-align: center;
 }
 .forecast-block {
+  font-size: 15px;
   border: 1px solid #fc5eba;
   border-radius: 30px;
   margin: 10px auto 0;
@@ -190,7 +191,7 @@ body {
   display: block;
   margin: 5px auto;
   color: #fc5eba;
-  font-size: 27px;
+  font-size: 25px;
 }
 .weather-forecast-min-temp {
   opacity: 0.5;
