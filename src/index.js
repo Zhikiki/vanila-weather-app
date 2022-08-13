@@ -131,6 +131,21 @@ function handleSubmit(event) {
   fahreneitLink.classList.remove("active");
   celsiusLink.classList.add("active");
 }
+
+function showCurrentLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+
+  let apiKey = `da6d6b75abd767e257a129a08b4d0f5d`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayCurrentTemperature);
+}
+function getCurrentLocation(event) {
+  event.preventDefault()
+
+  navigator.geolocation.getCurrentPosition(showCurrentLocation);
+}
+
 function displayCelsiusTemp(event) {
   event.preventDefault();
   let currentTemperatureElement = document.querySelector(
@@ -152,13 +167,14 @@ function displayFahrenheitTemp(event) {
 
   celsiusLink.classList.remove("active");
   fahreneitLink.classList.add("active");
-  //   remove class="acrive" from celsius link
-  //   add class="acrive" for fahrenheitLink
 }
 let celsiusTemp = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
+
+let currentLocation = document.querySelector("#current-location-button");
+currentLocation.addEventListener("click", getCurrentLocation);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
