@@ -79,7 +79,8 @@ function formatIcon(defaultIcon) {
   }
 }
 
-function displayNextDaysForecast() {
+function displayNextDaysForecast(response) {
+  console.log(response.data.daily)
   let nextDaysForecastElement = document.querySelector("#next-days-forecast");
 
   let nextDaysForecastHTML = `<div class="row next-days-forecast">`;
@@ -136,6 +137,16 @@ function displayCurrentTemperature(response) {
     "class",
     formatIcon(response.data.weather[0].icon)
   );
+  callApiForecast(response.data.coord);
+}
+
+function callApiForecast(coord) {
+  console.log(coord);
+
+  let apiKey = "da6d6b75abd767e257a129a08b4d0f5d";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayNextDaysForecast);
+  console.log(apiURL);
 }
 
 function searchCity(city) {
@@ -204,5 +215,5 @@ celsiusLink.addEventListener("click", displayCelsiusTemp);
 let fahreneitLink = document.querySelector("#fahrenheit-link");
 fahreneitLink.addEventListener("click", displayFahrenheitTemp);
 
-displayNextDaysForecast();
+// displayNextDaysForecast();
 searchCity("Kiev");
