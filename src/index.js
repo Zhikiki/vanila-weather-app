@@ -79,6 +79,28 @@ function formatIcon(defaultIcon) {
   }
 }
 
+function displayNextDaysForecast() {
+  let nextDaysForecastElement = document.querySelector("#next-days-forecast");
+
+  let nextDaysForecastHTML = `<div class="row next-days-forecast">`;
+
+  let forecastDays = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+  forecastDays.forEach(function (day) {
+    nextDaysForecastHTML =
+      nextDaysForecastHTML +
+      `<div class="col forecast-block">
+                  <div>${day}</div>
+                  <div>
+                    <i class="fa-solid fa-cloud"></i>
+                  </div>
+                  <div class="weather-forecast-max-temp">19°</div>
+                  <div class="weather-forecast-min-temp">11°</div>
+                </div>`;
+  });
+  nextDaysForecastHTML = nextDaysForecastHTML + `</div>`;
+  nextDaysForecastElement.innerHTML = nextDaysForecastHTML;
+}
+
 function displayCurrentTemperature(response) {
   celsiusTemp = response.data.main.temp;
 
@@ -141,7 +163,7 @@ function showCurrentLocation(position) {
   axios.get(apiUrl).then(displayCurrentTemperature);
 }
 function getCurrentLocation(event) {
-  event.preventDefault()
+  event.preventDefault();
 
   navigator.geolocation.getCurrentPosition(showCurrentLocation);
 }
@@ -182,4 +204,5 @@ celsiusLink.addEventListener("click", displayCelsiusTemp);
 let fahreneitLink = document.querySelector("#fahrenheit-link");
 fahreneitLink.addEventListener("click", displayFahrenheitTemp);
 
+displayNextDaysForecast();
 searchCity("Kiev");
