@@ -144,7 +144,6 @@ body {
 }
 
 .forecast {
-  /* min-width: 360px; */
   background: #ffffff;
 
   padding: 25px;
@@ -154,7 +153,6 @@ body {
 .tomorrow-weather-container {
   padding: 15px;
   border-radius: 30px;
-  min-width: 265px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   color: #ffffff;
   background: linear-gradient(127.04deg, #ff68c0 9.06%, #774cfe 97.79%);
@@ -185,7 +183,7 @@ body {
   border: 1px solid #fc5eba;
   border-radius: 30px;
   margin: 10px auto 0;
-  max-width: 55px;
+  max-width: 65px;
   padding: 12px 7px;
 }
 .forecast-block i {
@@ -193,6 +191,9 @@ body {
   margin: 5px auto;
   color: #fc5eba;
   font-size: 27px;
+}
+.weather-forecast-min-temp {
+  opacity: 0.5;
 }
 
 .footer {
