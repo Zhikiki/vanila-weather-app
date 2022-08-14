@@ -79,24 +79,38 @@ function formatIcon(defaultIcon) {
   }
 }
 
+function formatForecastDay(timestamp) {
+  let dateForecast = new Date(timestamp * 1000);
+  let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let dayForecast = weekdays[dateForecast.getDay()];
+
+  return dayForecast;
+}
+
 function displayNextDaysForecast(response) {
-  console.log(response.data.daily)
+  let forecast = response.data.daily;
+  console.log(forecast);
+
   let nextDaysForecastElement = document.querySelector("#next-days-forecast");
 
   let nextDaysForecastHTML = `<div class="row next-days-forecast">`;
-
-  let forecastDays = ["Wed", "Thu", "Fri", "Sat", "Sun"];
-  forecastDays.forEach(function (day) {
-    nextDaysForecastHTML =
-      nextDaysForecastHTML +
-      `<div class="col forecast-block">
-                  <div>${day}</div>
-                  <div>
-                    <i class="fa-solid fa-cloud"></i>
-                  </div>
-                  <div class="weather-forecast-max-temp">19°</div>
-                  <div class="weather-forecast-min-temp">11°</div>
-                </div>`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 7 && index > 1) {
+      nextDaysForecastHTML =
+        nextDaysForecastHTML +
+        `<div class="col forecast-block">
+                    <div>${formatForecastDay(forecastDay.dt)}</div>
+                    <div>
+                      <i class="${formatIcon(forecastDay.weather[0].icon)}"></i>
+                    </div>
+                    <div class="weather-forecast-max-temp">${Math.round(
+                      forecastDay.temp.max
+                    )}°</div>
+                    <div class="weather-forecast-min-temp">${Math.round(
+                      forecastDay.temp.min
+                    )}°</div>
+                  </div>`;
+    }
   });
   nextDaysForecastHTML = nextDaysForecastHTML + `</div>`;
   nextDaysForecastElement.innerHTML = nextDaysForecastHTML;
