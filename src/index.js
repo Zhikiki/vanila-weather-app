@@ -150,8 +150,68 @@ function displayNextDaysForecast(response) {
   );
 }
 
+function displayNextDaysForecastFahrenheit(response) {
+  console.log(response.data.daily[0].weather[0].icon);
+  let forecast = response.data.daily;
+
+  let nextDaysForecastElement = document.querySelector("#next-days-forecast");
+
+  let nextDaysForecastHTML = `<div class="row next-days-forecast">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 7 && index > 1) {
+      nextDaysForecastHTML =
+        nextDaysForecastHTML +
+        `<div class="col forecast-block">
+                    <div>${formatForecastDay(forecastDay.dt)}</div>
+                    <div>
+                      <i class="${formatIcon(forecastDay.weather[0].icon)}"></i>
+                    </div>
+                    <div class="weather-forecast-max-temp">${Math.round(
+                      forecastDay.temp.max
+                    )}°</div>
+                    <div class="weather-forecast-min-temp">${Math.round(
+                      forecastDay.temp.min
+                    )}°</div>
+                  </div>`;
+    }
+  });
+  nextDaysForecastHTML = nextDaysForecastHTML + `</div>`;
+  nextDaysForecastElement.innerHTML = nextDaysForecastHTML;
+
+  let tomorrowTemp = response.data.daily[0].temp.day;
+  let tomorrowMaxTemp = response.data.daily[0].temp.max;
+  let tomorrowMinTemp = response.data.daily[0].temp.min;
+  let tomorrowWeatherStatus = response.data.daily[0].weather[0].main;
+  console.log(tomorrowMaxTemp);
+
+  let tomorrowTempElement = document.querySelector("#tomorrow-temp");
+  tomorrowTempElement.innerHTML = Math.round(tomorrowTemp);
+
+  let tomorrowMaxTempElement = document.querySelector("#tomorrow-max-temp");
+  tomorrowMaxTempElement.innerHTML = `Max: ${Math.round(tomorrowMaxTemp)}`;
+
+  let tomorrowMinTempElement = document.querySelector("#tomorrow-min-temp");
+  tomorrowMinTempElement.innerHTML = `Min: ${Math.round(tomorrowMinTemp)}`;
+
+  let tomorrowWeatherStatusElement = document.querySelector(
+    "#tomorrow-weather-status"
+  );
+  tomorrowWeatherStatusElement.innerHTML = tomorrowWeatherStatus;
+
+  let tomorrowWeatherIconElement = document.querySelector(
+    "#tomorrow-weather-icon"
+  );
+  tomorrowWeatherIconElement.setAttribute(
+    "class",
+    formatIcon(response.data.daily[0].weather[0].icon)
+  );
+}
+
 function displayCurrentTemperature(response) {
   celsiusTemp = response.data.main.temp;
+  latitudeFahrenheit = response.data.coord.lat;
+  longitudeFahrenheit = response.data.coord.lon;
+  console.log(response.data.coord.lon);
 
   let currentCityElement = document.querySelector("#current-city");
   currentCityElement.innerHTML = response.data.name;
@@ -233,6 +293,10 @@ function displayCelsiusTemp(event) {
 
   fahreneitLink.classList.remove("active");
   celsiusLink.classList.add("active");
+
+  let city = document.querySelector("#current-city").innerHTML;
+
+  searchCity(city);
 }
 function displayFahrenheitTemp(event) {
   event.preventDefault();
@@ -245,8 +309,15 @@ function displayFahrenheitTemp(event) {
 
   celsiusLink.classList.remove("active");
   fahreneitLink.classList.add("active");
+
+  let apiKey = "da6d6b75abd767e257a129a08b4d0f5d";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitudeFahrenheit}&lon=${longitudeFahrenheit}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=imperial`;
+  axios.get(apiURL).then(displayNextDaysForecastFahrenheit);
 }
+
 let celsiusTemp = null;
+let latitudeFahrenheit = null;
+let longitudeFahrenheit = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
