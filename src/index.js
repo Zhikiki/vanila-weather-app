@@ -79,6 +79,12 @@ function formatIcon(defaultIcon) {
   }
 }
 
+// function displayTomorrowForecast(response) {
+//   let tommorowTempElement = document.querySelector("#tomorrow-temp");
+//   tommorowTempElement.innerHTML = tomorrowTemp
+//   let tomorrowTemp = response.data
+// }
+
 function formatForecastDay(timestamp) {
   let dateForecast = new Date(timestamp * 1000);
   let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -88,8 +94,8 @@ function formatForecastDay(timestamp) {
 }
 
 function displayNextDaysForecast(response) {
+  console.log(response.data.daily[0].weather[0].icon);
   let forecast = response.data.daily;
-  console.log(forecast);
 
   let nextDaysForecastElement = document.querySelector("#next-days-forecast");
 
@@ -114,6 +120,34 @@ function displayNextDaysForecast(response) {
   });
   nextDaysForecastHTML = nextDaysForecastHTML + `</div>`;
   nextDaysForecastElement.innerHTML = nextDaysForecastHTML;
+
+  let tomorrowTemp = response.data.daily[0].temp.day;
+  let tomorrowMaxTemp = response.data.daily[0].temp.max;
+  let tomorrowMinTemp = response.data.daily[0].temp.min;
+  let tomorrowWeatherStatus = response.data.daily[0].weather[0].main;
+  console.log(tomorrowMaxTemp);
+
+  let tomorrowTempElement = document.querySelector("#tomorrow-temp");
+  tomorrowTempElement.innerHTML = Math.round(tomorrowTemp);
+
+  let tomorrowMaxTempElement = document.querySelector("#tomorrow-max-temp");
+  tomorrowMaxTempElement.innerHTML = `Max: ${Math.round(tomorrowMaxTemp)}`;
+
+  let tomorrowMinTempElement = document.querySelector("#tomorrow-min-temp");
+  tomorrowMinTempElement.innerHTML = `Min: ${Math.round(tomorrowMinTemp)}`;
+
+  let tomorrowWeatherStatusElement = document.querySelector(
+    "#tomorrow-weather-status"
+  );
+  tomorrowWeatherStatusElement.innerHTML = tomorrowWeatherStatus;
+
+  let tomorrowWeatherIconElement = document.querySelector(
+    "#tomorrow-weather-icon"
+  );
+  tomorrowWeatherIconElement.setAttribute(
+    "class",
+    formatIcon(response.data.daily[0].weather[0].icon)
+  );
 }
 
 function displayCurrentTemperature(response) {
@@ -155,12 +189,9 @@ function displayCurrentTemperature(response) {
 }
 
 function callApiForecast(coord) {
-  console.log(coord);
-
   let apiKey = "da6d6b75abd767e257a129a08b4d0f5d";
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(displayNextDaysForecast);
-  console.log(apiURL);
 }
 
 function searchCity(city) {
